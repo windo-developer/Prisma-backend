@@ -7,8 +7,4 @@ const server = new ApolloServer({
   schema,
 });
 
-const PORT = process.env.PORT;
-
-server
-  .listen(PORT)
-  .then(() => console.log(`Server is running http://localhost:${PORT}/`));
+server.listen().then(({ url }) => console.log(`Server is running ${url}`));
