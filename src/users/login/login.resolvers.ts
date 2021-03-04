@@ -1,0 +1,27 @@
+import * as bcrypt from "bcrypt";
+import * as jwt from "jsonwebtoken";
+
+import client from "../../client";
+
+export default {
+  Mutation: {
+    login: async (_, { username, password }) => {
+      const user = await client.user.findFirst({ where: { username } });
+      if (!user) {
+        return { ok: false, error: "user not found" };
+      }
+      const passwordCheck = await bcrypt.compare(password, user.password);
+      if (!passwordCheck) {
+        return {
+          ok: false,
+          error: "Incorrect password",
+        };
+      }
+      const token = await jwt.sign({ id: user.id }, process.env.SECRET_KEY);
+      return {
+        ok: true,
+        token,
+      };
+    },
+  },
+};
