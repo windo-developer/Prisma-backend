@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec ts-node src/server --ext ts,js",
+    "preinstall": "npx npm-force-resolutions",
+    "dev": "nodemon --exec ts-node src/server --ext ts,js --delay 2",
     "migrate": "npx prisma migrate dev --preview-feature",
     "studio": "npx prisma studio"
   },
@@ -40,5 +41,9 @@
     "prisma": "^2.16.1",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.5"
+  },
+  "resolutions": {
+    "fs-capacitor": "^6.2.0",
+    "graphql-upload": "^11.0.0"
   }
 }
