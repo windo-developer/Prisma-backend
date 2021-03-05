@@ -20,6 +20,13 @@ const server = new ApolloServer({
 
 const app = express();
 app.use(logger("tiny"));
+
+app.use(
+  "/static",
+  express.static("uploads")
+  // graphqlUploadExpress({ maxFieldSize: 10000000, maxFiles: 10 })
+);
+
 server.applyMiddleware({ app });
 
 app.listen({ port: PORT }, () => {

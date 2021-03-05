@@ -1,2 +1,3 @@
-# graphQL / Apollo Server .with Prisma
+# graphQL / Apollo Server(+Express) / postgreSQL .with Prisma
 
+This backend using Apollo Server, postgreSQL DB
