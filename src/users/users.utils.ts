@@ -23,10 +23,15 @@ export const getUser = async (token) => {
 
 export const protectResolver = (ourResolver) => (root, args, context, info) => {
   if (!context.loggedInUser) {
-    return {
-      ok: false,
-      error: "Please login to first",
-    };
+    const query = info.operation.operation === "query";
+    if (query) {
+      return null;
+    } else {
+      return {
+        ok: false,
+        error: "Please login to first",
+      };
+    }
   }
   return ourResolver(root, args, context, info);
 };

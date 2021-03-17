@@ -21,14 +21,15 @@
   },
   "homepage": "https://github.com/windo-developer/Prisma-backend#readme",
   "dependencies": {
+    "@aws-sdk/types": "^3.6.1",
     "@prisma/client": "^2.18.0",
     "apollo-server": "^2.21.1",
     "apollo-server-express": "^2.21.1",
+    "aws-sdk": "^2.865.0",
     "bcrypt": "^5.0.1",
     "dotenv": "^8.2.0",
     "graphql": "^15.5.0",
     "graphql-tools": "^7.0.4",
-    "graphql-upload": "^11.0.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7"

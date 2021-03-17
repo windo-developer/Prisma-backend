@@ -6,8 +6,6 @@ This server requirements
 - postgreSQL
 - Prisma
 
-server does not use **AWS**, so the server itself saves and loads files as "static".
-
 ```
 npm install
 npm run dev
@@ -15,14 +13,25 @@ npm run dev
 
 ---
 
-node.js 14.X has graphql upload bug.  
-if you get a "Maximum call stack size exceeded resolution" error, try the following solutions.
+if you get a "Maximum call stack size exceeded resolution" error, try the following solutions. this issue basic **grahql-upload** has bug. (this bug occures in node version 12 or higher) so disable graphql upload in server settings and install `graphql-upload@latest`
 
-    1. npm install graphql-upload graphql
-    2. delete node_modules folder
-    3. npm install
+https://github.com/apollographql/apollo-server/issues/3508#issuecomment-662371289
 
-or **downgrade node version 12.x**
+you want another way, refer to the this link (my code applied this. **※this way interim solution**)
+
+https://github.com/jaydenseric/graphql-upload/issues/170#issuecomment-707934264
+
+1. add code in package.json
+
+```javascript
+"resolutions": {
+    "fs-capacitor":"^6.2.0",
+    "graphql-upload": "^11.0.0"
+  }
+```
+
+2. delete node_modules folder
+3. npm install (npx npm-force-resolutions)
 
 ### User model
 
@@ -48,10 +57,12 @@ or **downgrade node version 12.x**
 
 ### Comment model
 
-[] create Comment
-[] edit / delete comment
+[✔] create Comment
+[✔] edit / delete comment
 
 ### DM model
 
 [] Create DM Room  
 [] send, read Message
+
+### Connent AWS
