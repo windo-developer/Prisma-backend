@@ -27,6 +27,19 @@ export default {
         },
       });
     },
+    comments: ({ id }) => {
+      return client.comment.count({
+        where: {
+          photoId: id,
+        },
+      });
+    },
+    isMine: ({ userId }, _, { loggedInUser }) => {
+      if (!loggedInUser) {
+        return false;
+      }
+      return userId === loggedInUser.id;
+    },
   },
 
   // using hashtag
