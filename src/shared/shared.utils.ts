@@ -11,7 +11,7 @@ export const uploadToS3 = async (file, userId, folderName) => {
   const { filename, createReadStream } = await file;
   const readStream = createReadStream();
   const objectName = `${folderName}/${userId}-${Date.now()}-${filename}`;
-  const { Location } = await new AWS.S3()
+  const { Location } = await new AWS.S3() // Location = file path
     .upload({
       Bucket: "instagram-uploader",
       Key: objectName,

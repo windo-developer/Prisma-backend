@@ -51,13 +51,13 @@ https://github.com/jaydenseric/graphql-upload/issues/170#issuecomment-707934264
 
 ### Hashtag model
 
-[✔] Create hashtag
-[✔] parser hashtag
+[✔] Create hashtag  
+[✔] parser hashtag  
 [✔] Search hashtag
 
 ### Comment model
 
-[✔] create Comment
+[✔] create Comment  
 [✔] edit / delete comment
 
 ### DM model
@@ -66,3 +66,5 @@ https://github.com/jaydenseric/graphql-upload/issues/170#issuecomment-707934264
 [] send, read Message
 
 ### Connent AWS
+
+[✔] S3 file upload

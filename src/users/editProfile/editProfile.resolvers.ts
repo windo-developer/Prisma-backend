@@ -20,7 +20,7 @@ const resolverFunc = async (
     //   );
     //   readStream.pipe(writeStream);
     //   avatarUrl = `http://localhost:4000/static/${newFilename}`;
-    avatarUrl = await uploadToS3(avatar, loggedInUser.id, "uploads");
+    avatarUrl = await uploadToS3(avatar, loggedInUser.id, "avatars");
   }
 
   let hashedPassword = null;

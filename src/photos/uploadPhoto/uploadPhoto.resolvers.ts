@@ -11,7 +11,7 @@ export default {
         if (caption) {
           hashtagObjects = processHashtags(caption);
         }
-        const fileUrl = await uploadToS3(file, loggedInUser.id, "avatars");
+        const fileUrl = await uploadToS3(file, loggedInUser.id, "uploads");
         return client.photo.create({
           data: {
             file: fileUrl,
