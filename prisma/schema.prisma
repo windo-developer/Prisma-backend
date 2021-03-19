@@ -25,7 +25,7 @@ model User {
   likes     Like[]
   comments  Comment[]
   rooms     Room[]
-  message   Message[]
+  messages  Message[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 }
@@ -76,10 +76,10 @@ model Comment {
 
 model Room {
   id        Int       @id @default(autoincrement())
-  user      User[]
+  users     User[]
+  messages  Message[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  message   Message[]
 }
 
 model Message {
@@ -89,6 +89,7 @@ model Message {
   room      Room     @relation(fields: [roomId], references: [id])
   roomId    Int
   payload   String
+  read      Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

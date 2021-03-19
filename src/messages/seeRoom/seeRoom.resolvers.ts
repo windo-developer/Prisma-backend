@@ -3,9 +3,10 @@ import { protectResolver } from "../../users/users.utils";
 
 export default {
   Query: {
-    seeRooms: protectResolver(async (_, __, { loggedInUser }) => {
-      return await client.room.findMany({
+    seeRoom: protectResolver(async (_, { id }, { loggedInUser }) => {
+      return await client.room.findFirst({
         where: {
+          id,
           users: {
             some: {
               id: loggedInUser.id,
