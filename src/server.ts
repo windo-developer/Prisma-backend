@@ -6,24 +6,43 @@ import * as http from "http";
 
 import { typeDefs, resolvers } from "./schema";
 import { getUser, protectResolver } from "./users/users.utils";
-import * as pubsub from "./pubsub";
 
 const PORT = process.env.PORT;
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: async ({ req }) => {
-    if (req) {
+  context: async (ctx) => {
+    if (ctx.req) {
       return {
-        loggedInUser: await getUser(req.headers.authorization),
+        loggedInUser: await getUser(ctx.req.headers.authorization),
+      };
+    } else {
+      const {
+        connection: { context },
+      } = ctx;
+      return {
+        loggedInUser: context.loggedInUser,
       };
     }
+  },
+  subscriptions: {
+    onConnect: async (connectionParams: any, webSocket) => {
+      if (!connectionParams.authorization) {
+        throw new Error("You can't listen.");
+      }
+      // console.log(connectionParams.authorization);
+      const loggedInUser = await getUser(connectionParams.authorization);
+      return {
+        loggedInUser,
+      };
+    },
   },
 });
 
 const app = express();
 app.use(logger("tiny"));
+// express static upload, this server changed 'AWS(S3)', no longer used '/static'
 app.use(
   "/static",
   express.static("uploads")

@@ -42,12 +42,12 @@ https://github.com/jaydenseric/graphql-upload/issues/170#issuecomment-707934264
 [✔] Following / UnFollow  
 [✔] Searching User
 
-### Photo model
+### Photo(Post) model
 
 [✔] Upload Photo (+user profile image)  
 [✔] Like / UnLike Post  
 [✔] Showing Likes  
-[🔺] Showing Post (Feed Page)
+[🔺] Showing Post (Feed Page) // TODO: pagnation
 
 ### Hashtag model
 
@@ -62,8 +62,10 @@ https://github.com/jaydenseric/graphql-upload/issues/170#issuecomment-707934264
 
 ### DM model
 
-[] Create DM Room  
-[] send, read Message
+[✔] Create DM Room  
+[✔] see room list  
+[✔] send, read Message(message read check)  
+[✔] real time message(PubServer)
 
 ### Connent AWS
 
